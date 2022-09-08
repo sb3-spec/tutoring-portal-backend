@@ -19,7 +19,7 @@ module.exports = (sequelize) => {
             type: DataTypes.DATE
         },
 
-        sessionCost: {
+        payout: {
             allowNull: false,
             type: DataTypes.DOUBLE
         },

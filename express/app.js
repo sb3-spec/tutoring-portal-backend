@@ -35,9 +35,9 @@ for (const [routeName, routeController] of Object.entries(routes)) {
 			makeHandlerAwareOfAsyncErrors(routeController.getAll)
 		);
 	};
-	if (routeController.getClients) {
+	if (routeController.getTutorClients) {
 		app.get(`/api/tutors/clients/:email`,
-			makeHandlerAwareOfAsyncErrors(routeController.getClients)
+			makeHandlerAwareOfAsyncErrors(routeController.getTutorClients)
 		);
 		
 	};
@@ -49,6 +49,12 @@ for (const [routeName, routeController] of Object.entries(routes)) {
 	if (routeController.getByEmail) {
 		app.get(`/api/${routeName}/email/:email`),
 		makeHandlerAwareOfAsyncErrors(routeController.getByEmail)
+	};
+	if (routeController.getSessions) {
+		app.get(
+			`/api/${routeName}/sessions/:email/:date`,
+			makeHandlerAwareOfAsyncErrors(routeController.getSessions)
+		);
 	};
 	if (routeController.getByTutorId) {
 		app.get(

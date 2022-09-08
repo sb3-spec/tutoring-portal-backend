@@ -44,10 +44,10 @@ async function create(req, res) {
         // send different responses based on check above
 
         if (emailInUse) {
-            res.status(500).send(err.message)
+            res.status(500).send('Email already in use')
         } else {
             const newObj = await models.client.create(req.body).catch((err) => {
-                res.status(500).json({'Error': err, 'Stack': err.stack})
+                res.status(500).json({'Error': err, 'Stack': err.stack}).end();
             })
 
             res.status(201).json(newObj);

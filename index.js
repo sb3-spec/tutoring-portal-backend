@@ -1,6 +1,6 @@
 const app = require('./express/app')
 const sequelize = require('./sequelize')
-const PORT = 5000
+const PORT = 5000;
 
 async function setUpDB() {
     console.log('Checking database connection...')
