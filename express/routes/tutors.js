@@ -70,17 +70,18 @@ async function getSessions(req, res) {
     let start = new Date(dateInfo[0], dateInfo[1] - 1, 1);
     let end = new Date(start.getFullYear(), start.getMonth() + 1, 1);
 
+    let tutor = {};
 
-    let tutor = await models.tutor.findOne({ 
+    await models.tutor.findOne({ 
         where: { 
             email: email,
         }
+    }).then((res) => {
+        tutor = res.data
     }).catch(err => {
         return res.status(500).json({'Error': err.message});
-        
     });
 
-    console.log(tutor);
 
     if (!tutor) {
         return res.status(400).json({error: "Invalid Email Address"});
