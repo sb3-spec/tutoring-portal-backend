@@ -80,6 +80,8 @@ async function getSessions(req, res) {
         
     });
 
+    console.log(tutor);
+
     if (!tutor) {
         return res.status(400).json({error: "Invalid Email Address"});
     };

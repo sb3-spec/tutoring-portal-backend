@@ -25,6 +25,10 @@ app.get('/auth_config.json', (req, res) => {
 	res.sendFile(join(__dirname, 'auth_config.json'))
 });
 
+app.get('/', (req, res) => {
+	res.send('Hello World')
+})
+
 
 
 // API ROUTES
