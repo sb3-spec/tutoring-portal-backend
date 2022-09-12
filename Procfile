@@ -1,1 +1,1 @@
-web: node ./express/app.js npm start 
+web: node index.js npm start 
