@@ -8,7 +8,7 @@ const sequelize = new Sequelize(
     process.env.NODE_ENV !== 'production' ? 'tutoring-portal-2' : process.env.PROD_DATABASE_NAME, 'postgres', 
     process.env.NODE_ENV !== 'production' ? "Rkf7010zaqxsw!@#" : process.env.PROD_DATABASE_NAME, 
     {
-        host: process.env.NODE_ENV !== 'production' ? process.env.DEVELOPMENT_URL : process.env.PRODUCTION_URL,
+        host: process.env.NODE_ENV !== 'production' ? process.env.PROD_DATABASE_URL : process.env.PRODUCTION_URL,
         dialect: 'postgres',
         define: {
             freezeTableName: true,
