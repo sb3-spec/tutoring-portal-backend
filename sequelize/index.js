@@ -1,15 +1,20 @@
 const { Sequelize } = require('sequelize');
+require('dotenv').config(); 
+
 const applyExtraSetup = require('./extra-setup')
 
 
-const sequelize = new Sequelize('tutoring-portal-2', 'postgres', "Rkf7010zaqxsw!@#", {
-    host: 'localhost',
-    dialect: 'postgres',
-    define: {
-        freezeTableName: true,
-    },
-    logging: false,
-})
+const sequelize = new Sequelize(
+    process.env.NODE_ENV !== 'production' ? 'tutoring-portal-2' : process.env.PROD_DATABASE_NAME, 'postgres', 
+    process.env.NODE_ENV !== 'production' ? "Rkf7010zaqxsw!@#" : process.env.PROD_DATABASE_NAME, 
+    {
+        host: process.env.NODE_ENV !== 'production' ? process.env.DEVELOPMENT_URL : process.env.PRODUCTION_URL,
+        dialect: 'postgres',
+        define: {
+            freezeTableName: true,
+        },
+        logging: false,
+});
 
 
 const modelDefiners = [
