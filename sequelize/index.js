@@ -10,11 +10,17 @@ const sequelize = new Sequelize(
     {
         host: process.env.NODE_ENV !== 'production' ?  'localhost': process.env.PROD_DATABASE_URL,
         dialect: 'postgres',
+        dialectOptions: {
+            ssl: {
+                rejectUnauthorized: false
+            }
+        },
         define: {
             freezeTableName: true,
         },
         logging: false,
-});
+    }
+);
 
 
 const modelDefiners = [
