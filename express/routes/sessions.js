@@ -65,7 +65,7 @@ async function remove(req, res) {
             uuid: req.params.id
         }
     });
-    res.status(200).json('Succesfully deleted');
+    res.status(200).json(req.params.id);
 }
 
 

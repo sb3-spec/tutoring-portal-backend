@@ -5,7 +5,8 @@
   "main": "express/app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon /express/app.js"
+    "dev": "nodemon /express/app.js",
+    "start": "/express/app.js"
   },
   "keywords": [],
   "author": "",
