@@ -12,7 +12,7 @@ const sequelize = new Sequelize(
     process.env.NODE_ENV !== 'production' ? 'postgres' : process.env.DATABASE_USER, 
     process.env.NODE_ENV !== 'production' ? "Rkf7010zaqxsw!@#" : process.env.DATABASE_PASSWORD, 
     {
-        host: process.env.NODE_ENV !== 'production' ?  'localhost': process.env.DATABASE_URI,
+        host: process.env.NODE_ENV !== 'production' ?  'localhost': process.env.DATABASE_HOST,
         dialect: 'postgres',
         dialectOptions: {
             ssl: {
