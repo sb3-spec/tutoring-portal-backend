@@ -3,13 +3,13 @@ require('dotenv').config();
 
 const applyExtraSetup = require('./extra-setup')
 
-console.log(process.env.DATABASE_URL)
+
 const sequelize = new Sequelize(
-    process.env.NODE_ENV !== 'production' ? 'tutoring-portal-2' : process.env.PROD_DATABASE_NAME, 
-    process.env.NODE_ENV !== 'production' ? 'postgres' : process.env.PROD_DATABASE_USER, 
-    process.env.NODE_ENV !== 'production' ? "Rkf7010zaqxsw!@#" : process.env.PROD_DATABASE_PASSWORD, 
+    process.env.NODE_ENV !== 'production' ? 'tutoring-portal-2' : process.env.DATABASE_URL, 
+    process.env.NODE_ENV !== 'production' ? 'postgres' : process.env.DATABASE_USER, 
+    process.env.NODE_ENV !== 'production' ? "Rkf7010zaqxsw!@#" : process.env.DATABASE_PASSWORD, 
     {
-        host: process.env.NODE_ENV !== 'production' ?  'localhost': process.env.PROD_DATABASE_HOST,
+        host: process.env.NODE_ENV !== 'production' ?  'localhost': process.env.DATABASE_HOST,
         dialect: 'postgres',
         dialectOptions: {
             ssl: {
