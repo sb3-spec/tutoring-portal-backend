@@ -5,7 +5,7 @@ const applyExtraSetup = require('./extra-setup')
 
 
 const sequelize = new Sequelize(
-    process.env.NODE_ENV !== 'production' ? 'tutoring-portal-2' : process.env.DATABASE_URL, 
+    process.env.NODE_ENV !== 'production' ? 'tutoring-portal-2' : process.env.DATABASE_URI, 
     process.env.NODE_ENV !== 'production' ? 'postgres' : process.env.DATABASE_USER, 
     process.env.NODE_ENV !== 'production' ? "Rkf7010zaqxsw!@#" : process.env.DATABASE_PASSWORD, 
     {
