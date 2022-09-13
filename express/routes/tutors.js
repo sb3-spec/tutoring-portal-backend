@@ -77,7 +77,7 @@ async function getSessions(req, res) {
             email: email,
         }
     }).then((res) => {
-        tutor = res.data
+        tutor = res
     }).catch(err => {
         return res.status(500).json({'Error': err.message});
     });
