@@ -24,8 +24,6 @@ async function getTutorClients(req, res) {
     let encryptedText = decodeURIComponent(req.params.email);
     let email = CryptoJS.AES.decrypt(encryptedText, 'test').toString(CryptoJS.enc.Utf8);
 
-    console.log(email)
-
     let tutor = await models.tutor.findOne({ 
         where: { email: email }
     }).catch(err => {
@@ -48,22 +46,25 @@ async function getTutorClients(req, res) {
 
 async function getByEmail(req, res) {
     let email = decodeURI(req.params.email);
-    const tutor = await models.tutor.findOne({ 
+    let tutor = {}
+    await models.tutor.findOne({ 
         where: {
             email: email 
         }  
+    }).then(res => {
+        tutor = res.data
+    }).catch(err => {
+        res.status(500).json({error: err});
     });
     
-    if (tutor) {
-        res.status(200).json(tutor);
-    } else {
-        res.status(400).send('404 - Not found')
-    }
+    res.status(200).json(tutor);
 }
 
 async function getSessions(req, res) {
     let encryptedText = decodeURIComponent(req.params.email);
     let email = CryptoJS.AES.decrypt(encryptedText, 'test').toString(CryptoJS.enc.Utf8);
+
+    console.log(email)
 
     let uriDecodedDate = decodeURIComponent(req.params.date);
     let dateInfo = uriDecodedDate.split('-');
@@ -158,7 +159,7 @@ async function create(req, res) {
         } else {
 
             const newTutor = await models.tutor.create(req.body).catch((err) => {
-                res.status(400).json({error: err, stackError: err.stack})
+                res.status(500).json({error: err, stackError: err.stack})
             })
             res.status(201).json(newTutor).end();
         }

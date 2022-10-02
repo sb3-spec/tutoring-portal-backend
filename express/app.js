@@ -45,15 +45,16 @@ for (const [routeName, routeController] of Object.entries(routes)) {
 		);
 		
 	};
+	if (routeController.getByEmail) {
+		app.get(`/api/${routeName}/email/:email`),
+		makeHandlerAwareOfAsyncErrors(routeController.getByEmail)
+	};
 	if (routeController.getByTutorEmail) {
 		app.get(`/api/${routeName}/:email`, 
 		makeHandlerAwareOfAsyncErrors(routeController.getByTutorEmail));
 		
 	}
-	if (routeController.getByEmail) {
-		app.get(`/api/${routeName}/email/:email`),
-		makeHandlerAwareOfAsyncErrors(routeController.getByEmail)
-	};
+	
 	if (routeController.getSessions) {
 		app.get(
 			`/api/${routeName}/sessions/:email/:date`,
